@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <NavBar title="Strivestaurant" links={['Home', 'Contacts', 'Location', 'blabla', 'Flynn']} />
-      <Home />
+      <Home newTitle="newTitle" newPayoff="newPayoff" />
     </div>
   )
 }

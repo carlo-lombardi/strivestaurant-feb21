@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Col, Container, Row } from 'react-bootstrap'
+import { Carousel, Col, Container, Row, Alert } from 'react-bootstrap'
 import items from '../data/menu.json'
 import DishComments from './DishComments'
 import ReservationForm from './ReservationForm'
@@ -22,7 +22,7 @@ class Home extends React.Component {
     // }
 
     render() {
-
+      const {newTitle, newPayoff} = this.props
         return (
             <Container>
                 <Row className="justify-content-center mt-3">
@@ -46,8 +46,8 @@ class Home extends React.Component {
                                             })}
                                         />
                                         <Carousel.Caption>
-                                            <h3>{item.name}</h3>
-                                            <p>{item.description}</p>
+                                            { newTitle && <h3>{newTitle}</h3>}
+                                            { newPayoff  && <p>{newPayoff}</p>}
                                         </Carousel.Caption>
                                     </Carousel.Item>
                                 )
@@ -58,25 +58,28 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                        <Reservations />
+                        <Reservations header="The title given
+                        
+                        "/>
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                        <ReservationForm />
+                        {this.state.selectedDish.comments.some(rating => rating.rating < 5)
+                        ?(
+                           <Alert variant="danger">
+                              <Alert.Heading> this is bad dish </Alert.Heading>
+                            </Alert>
+                          )
+                        : (
+                          <ReservationForm />
+                          )
+                        }
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                      {
-                        items.map((item) =>{
-                          {item.name === "Amatriciana" && <h1>none</h1>}
-                        })
-                      }
-                      <DishComments 
-                      selectedDish={this.state.selectedDish} 
-                      
-                      />
+                      { this.state.selectedDish.name !== "Amatriciana" && <DishComments selectedDish={this.state.selectedDish} />}  
                     </Col>
                 </Row>
             </Container>

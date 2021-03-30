@@ -7,7 +7,12 @@ render(){
   const {title, links } = this.props
   return(
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">{title} - Strive for food</Navbar.Brand>
+        <Navbar.Brand href="#home">
+        {title}
+        {links && <h2>Strive school</h2>} 
+        {links.some((e) => e === "Alfredo") && <h2>The perfect place for pasta lovers</h2>}
+      
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">

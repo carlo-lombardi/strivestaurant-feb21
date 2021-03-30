@@ -62,10 +62,10 @@ class Reservations extends React.Component {
         //     reservations: [{ name: 'Stefano', numberOfPersons: '5', dateTime: '9817984389' }]
         // })
         // THIS IS BAD, YOUR COMPONENT WILL BE STUCK INTO AN INFINITE LOOP
-
+        const {header} = this.props
         return (
             <>
-                <h3>RESERVATIONS</h3>
+                <h3>{header}</h3>
                 <div className="my-3">
                     {/* here we'll put our map */}
                     {this.state.isLoading && (<Spinner animation="border" variant="success" />)}

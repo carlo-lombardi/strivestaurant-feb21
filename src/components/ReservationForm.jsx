@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Form, Alert} from 'react-bootstrap'
-import AlertDismissible from "./Alert"
 // name
 // phone
 // numberOfPersons
