@@ -13,9 +13,8 @@ class Home extends React.Component {
     state = {
         selectedDish: items[0]
     }
-
     // constructor(props) {
-    //     super(props)
+    //     ssuper(props)
     //     console.log('constructor invoked!')
     //     this.state = {
     //         selectedDish: null
@@ -23,6 +22,7 @@ class Home extends React.Component {
     // }
 
     render() {
+
         return (
             <Container>
                 <Row className="justify-content-center mt-3">
@@ -68,7 +68,15 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-5">
                     <Col xs={8}>
-                        <DishComments selectedDish={this.state.selectedDish} />
+                      {
+                        items.map((item) =>{
+                          {item.name === "Amatriciana" && <h1>none</h1>}
+                        })
+                      }
+                      <DishComments 
+                      selectedDish={this.state.selectedDish} 
+                      
+                      />
                     </Col>
                 </Row>
             </Container>

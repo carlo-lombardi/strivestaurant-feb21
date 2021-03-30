@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
-
+import { Button, Form, Alert} from 'react-bootstrap'
+import AlertDismissible from "./Alert"
 // name
 // phone
 // numberOfPersons
@@ -18,7 +18,8 @@ class ReservationForm extends React.Component {
             smoking: false,
             dateTime: '',
             specialRequests: ''
-        }
+        },
+        isError : false, 
     }
 
     handleInput = (e) => {
@@ -56,7 +57,9 @@ class ReservationForm extends React.Component {
                     }
                 })
             } else {
-                alert('there was a problem')
+                this.setState({
+                  isError: true
+                })
             }
         } catch (error) {
             console.log(error)
@@ -67,6 +70,16 @@ class ReservationForm extends React.Component {
         return (
             <>
                 <h2>Book your table NOW!!</h2>
+                {
+                  this.state.isError && (
+                    <Alert variant="danger">
+                    <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                    <p>
+                      Fill all the camps
+                    </p>
+                  </Alert>
+                  )
+                }
                 <Form onSubmit={this.submitData}>
                     <Form.Group>
                         <Form.Label>Your name</Form.Label>
